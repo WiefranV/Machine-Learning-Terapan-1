@@ -147,8 +147,6 @@ Untuk memahami struktur dan distribusi data, beberapa tahapan EDA dilakukan seba
 
    * Digunakan histogram dan boxplot untuk memahami penyebaran nilai pada kolom `Weight`, `Height`, `Age`, `FAF`, dan lainnya.
 
-   * Teridentifikasi adanya outlier pada beberapa fitur seperti `Weight` dan `TUE`.
-
    > ![Gambar](images/3.png)
 
 3. **Korelasi antar Fitur Numerik**
@@ -252,7 +250,7 @@ Dari hasil eksplorasi data:
    ![Gambar](images/7.png)
 
    **Alasan:**
-   Visualisasi boxplot membantu dalam mendeteksi outlier secara intuitif dan memperkuat hasil deteksi outlier dari metode IQR.
+   Visualisasi boxplot membantu dalam mendeteksi outlier secara intuitif dan memperkuat hasil deteksi outlier dari metode IQR. Outlier disini akan tetap digunakan karena masih dalam rentang yang wajar, serta merupakan data faktual yang terjadi di lapangan/dunia nyata.
 
 ---
 
@@ -447,56 +445,61 @@ Evaluasi model dilakukan untuk mengetahui seberapa baik model klasifikasi dalam 
 **Metrik Evaluasi yang Digunakan**
 
 Berikut adalah daftar metrik yang digunakan beserta penjelasan dan alasan penggunaannya:
-
 1. **Accuracy**
 
    $$
    \text{Accuracy} = \frac{TP + TN}{TP + TN + FP + FN}
    $$
 
-   * Mengukur proporsi prediksi yang benar terhadap seluruh prediksi.
-   * Cocok untuk data seimbang, tetapi **kurang informatif jika data tidak seimbang**.
+   - Mengukur proporsi prediksi yang benar terhadap seluruh prediksi.
+   - Cocok untuk data seimbang, tetapi **kurang informatif jika data tidak seimbang**.
+
 2. **Precision (Macro & Weighted)**
 
    $$
    \text{Precision} = \frac{TP}{TP + FP}
    $$
 
-   * **Macro**: rata-rata precision tiap kelas tanpa mempertimbangkan jumlah data per kelas.
-   * **Weighted**: memperhitungkan distribusi kelas (lebih akurat untuk data tidak seimbang).
-   * Berguna untuk mengukur **seberapa relevan prediksi positif** dari model.
+   - **Macro**: rata-rata precision tiap kelas tanpa mempertimbangkan jumlah data per kelas.
+   - **Weighted**: memperhitungkan distribusi kelas (lebih akurat untuk data tidak seimbang).
+   - Berguna untuk mengukur **seberapa relevan prediksi positif** dari model.
+
 3. **Recall (Macro & Weighted)**
 
    $$
    \text{Recall} = \frac{TP}{TP + FN}
    $$
 
-   * Menunjukkan **kemampuan model menangkap semua instance dari kelas tertentu**.
-   * Recall penting saat **False Negative** harus diminimalkan.
+   - Menunjukkan **kemampuan model menangkap semua instance dari kelas tertentu**.
+   - Recall penting saat **False Negative** harus diminimalkan.
+
 4. **F1 Score (Macro & Weighted)**
 
    $$
    \text{F1} = 2 \times \frac{\text{Precision} \times \text{Recall}}{\text{Precision} + \text{Recall}}
    $$
 
-   * Harmonic mean antara Precision dan Recall.
-   * **Macro** dan **Weighted** digunakan untuk memahami performa global, terutama saat dataset tidak seimbang.
+   - Harmonic mean antara Precision dan Recall.
+   - **Macro** dan **Weighted** digunakan untuk memahami performa global, terutama saat dataset tidak seimbang.
+
 5. **Cohen’s Kappa**
 
    $$
    \kappa = \frac{p_o - p_e}{1 - p_e}
    $$
 
-   * Mengukur tingkat kesepakatan antara prediksi dan label aktual **dengan mengoreksi kemungkinan prediksi acak**.
-   * Cocok untuk klasifikasi multikelas.
+   - Mengukur tingkat kesepakatan antara prediksi dan label aktual **dengan mengoreksi kemungkinan prediksi acak**.
+   - Cocok untuk klasifikasi multikelas.
+
 6. **Matthews Correlation Coefficient (MCC)**
 
    $$
    \text{MCC} = \frac{(TP \times TN) - (FP \times FN)}{\sqrt{(TP + FP)(TP + FN)(TN + FP)(TN + FN)}}
    $$
 
-   * Salah satu metrik paling **andalan dalam klasifikasi tidak seimbang**.
-   * Memberikan nilai antara -1 dan +1.
+   - Salah satu metrik paling **andalan dalam klasifikasi tidak seimbang**.
+   - Memberikan nilai antara -1 dan +1.
+
 7. **Classification Report**
 
    * Memberikan detail lengkap untuk precision, recall, dan f1-score untuk masing-masing kelas.
