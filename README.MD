@@ -188,9 +188,9 @@ Untuk memahami struktur dan distribusi data, beberapa tahapan EDA dilakukan seba
    * Frekuensi untuk fitur kategorikal (seperti `Gender`, `SMOKE`, `FAVC`) dianalisis menggunakan `value_counts()` dan divisualisasikan dengan diagram batang.
 
    > ![Gambar](images/6.png)
-7. **Melihat data null atau tidak**
+7. **Melihat data null atau duplikat**
 
-   * Menggunakan kode `df.isna().sum()` Untuk melihat adanya data null atau tidak, serta kokde `df.duplicated().sum()`, dimana setelah di jalankan, tidak ada data yang null, namun dataset memiliki data duplikat sebanyak 24 buah
+   * Menggunakan kode `df.isna().sum()` Untuk melihat adanya data null atau tidak, serta kode `df.duplicated().sum()`, dimana setelah di jalankan, tidak ada data yang null, namun dataset memiliki data duplikat sebanyak 24 buah
 
       ```
       np.int64(24)
